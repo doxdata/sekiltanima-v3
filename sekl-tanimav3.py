@@ -34,7 +34,7 @@ def detect_shapes(frame):
         perimeter = cv2.arcLength(contour, True)
         approx = cv2.approxPolyDP(contour, 0.03 * perimeter, True)
 
-        shape_name = "Bilinmeyen"
+        shape_name = "Bilinmeyen"    #algılanamayan sekiller icin aga algıyamayancaz bunu yazıyür
 
         if area > 1000:
             if len(approx) == 3:
@@ -66,8 +66,8 @@ def detect_shapes(frame):
                 if solidity > 0.5:
                     shape_name = "Yildiz"
 
-            # Elips tespiti
-            if len(contour) >= 5:  # Elips tespiti icin en az 5 nokta gerekli
+            
+            if len(contour) >= 5:  
                 ellipse = cv2.fitEllipse(contour)
                 center, axes, angle = ellipse
                 if 0.8 <= axes[0] / 300 <= 1.2 and 0.8 <= axes[1] / 400 <= 1.2:
